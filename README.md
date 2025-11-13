@@ -61,3 +61,14 @@ curl --location 'http://localhost:3000/shopping-cart' \
 }'
 
 ```
+
+## Commands available
+
+| Command          | Description                      |
+| ---------------- | -------------------------------- |
+| npm run start    | Start the server                 |
+| npm run dev      | Start the server with watch mode |
+| npm run lint     | Check for lintin errors          |
+| npm run lint:fix | Fix linting errors               |
+| npm run format   | Format code                      |
+| npm run test     | Run tests                        |

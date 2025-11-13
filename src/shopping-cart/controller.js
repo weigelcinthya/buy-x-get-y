@@ -12,10 +12,14 @@ exports.getShoppingCart = (req, res) => {
     res.status(400).json({ message: "There's no items in the cart." });
   }
 
-  const processedData = ShoppingCartService.getShoppingCart(
-    reference,
-    lineItems,
-  );
+  try {
+    const processedData = ShoppingCartService.getShoppingCart(
+      reference,
+      lineItems,
+    );
 
-  res.status(200).json(processedData);
+    res.status(200).json(processedData);
+  } catch (error) {
+    res.status(500).json(error);
+  }
 };
