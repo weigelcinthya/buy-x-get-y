@@ -6,7 +6,7 @@ exports.getShoppingCart = (req, res) => {
     return;
   }
 
-  const { reference, lineItems } = req.body?.cart;
+  const { reference, lineItems } = req.body.cart;
 
   if (lineItems.length === 0) {
     res.status(400).json({ message: "There's no items in the cart." });
