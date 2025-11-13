@@ -1,43 +1,37 @@
 const schema = require("../../assets/schema.json");
 
 const getShoppingCart = (reference, lineItems) => {
-  try {
-    const prerequisiteSkusList = lineItems.filter((item) =>
-      schema.prerequisite_skus.includes(item.sku),
-    );
-    const eligibleSkusList = lineItems.filter((item) =>
-      schema.eligible_skus.includes(item.sku),
-    );
+  const prerequisiteSkusList = lineItems.filter((item) =>
+    schema.prerequisite_skus.includes(item.sku),
+  );
+  const eligibleSkusList = lineItems.filter((item) =>
+    schema.eligible_skus.includes(item.sku),
+  );
 
-    let totalCartValue = 0;
-
-    const isDiscountEligible =
-      prerequisiteSkusList.length && eligibleSkusList.length;
-    if (isDiscountEligible) {
-      applyDiscount(eligibleSkusList);
-    }
-
-    totalCartValue = calculateCartTotal(lineItems);
-
-    return {
-      cart: {
-        reference: reference,
-        lineItems: lineItems,
-        final_cart_cost: `$${totalCartValue.toFixed(2)}`,
-      },
-    };
-  } catch (error) {
-    throw error;
+  const isDiscountEligible =
+    prerequisiteSkusList.length && eligibleSkusList.length;
+  if (isDiscountEligible) {
+    applyDiscount(eligibleSkusList);
   }
+
+  const totalCartValue = calculateCartTotal(lineItems);
+
+  return {
+    cart: {
+      reference: reference,
+      lineItems: lineItems,
+      final_cart_cost: `$${totalCartValue.toFixed(2)}`,
+    },
+  };
 };
 
 const applyDiscount = (eligibleSkusList) => {
-  let sortedEligibleSkus = eligibleSkusList.sort((a, b) => {
+  const sortedEligibleSkus = eligibleSkusList.sort((a, b) => {
     return Number(a.price) - Number(b.price);
   });
-  let itemToDiscount = sortedEligibleSkus[0];
+  const itemToDiscount = sortedEligibleSkus[0];
   const percentage = schema.discount_value / 100;
-  let priceWithDiscount =
+  const priceWithDiscount =
     Number(itemToDiscount.price) - Number(itemToDiscount.price) * percentage;
   itemToDiscount.price = priceWithDiscount;
 };
