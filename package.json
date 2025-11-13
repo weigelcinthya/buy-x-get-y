@@ -2,9 +2,10 @@
   "name": "buy-x-get-y",
   "version": "1.0.0",
   "description": "An API to apply special discounts",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
-    "dev": "node --inspect --watch-path=./ ./app.js",
+    "dev": "node --inspect --watch-path=./src ./src/app.js",
+    "start": "node ./src/app.js",
     "lint": "npx eslint ./src/**",
     "lint:fix": "npx eslint ./src/** --fix",
     "format": "npx prettier . --write",

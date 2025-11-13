@@ -1,4 +1,4 @@
-const schema = require("../assets/schema.json");
+const schema = require("../../assets/schema.json");
 
 const applySpecialDiscount = (reference, lineItems) => {
   const prerequisiteSkusList = lineItems.filter((item) =>
