@@ -2,13 +2,28 @@
 
 An API to apply special discounts built with Node and Express.js
 
-# Getting started
+## Requirements
 
-- Install [npm](https://www.npmjs.com/)
-- Run `npm install` in the project folder
-- Run `npm run dev` to start the server
+- Node 20.17.0
+- Npm 10.8.2
 
-# Testing the application
+## Getting started
+
+- Install dependencies 
+
+```
+npm install
+
+```
+
+- Start the server
+
+```
+npm run start
+
+```
+
+## Testing the application
 
 - You'll need [Postman](https://www.postman.com/) or another similar application to send requests
 - The server will be available in the http://localhost:3000/ and you can test the shopping cart endpoint with this path: /shopping-cart
@@ -26,4 +41,22 @@ An API to apply special discounts built with Node and Express.js
     ]
   }
 }
+```
+- Another option to test the aplication is to run a 'curl' command, like the example below: 
+
+```
+curl --location 'http://localhost:3000/shopping-cart' \
+--header 'Content-Type: application/json' \
+--data '{
+  "cart": {
+    "reference": "2d832fe0-6c96-4515-9be7-4c00983539c1",
+    "lineItems": [
+      { "name": "Peanut Butter", "price": "39.0", "sku": "PEANUT-BUTTER" },
+      { "name": "Fruity", "price": "34.99", "sku": "FRUITY" },
+      { "name": "Chocolate", "price": "36", "sku": "CHOCOLATE" },
+      { "name": "Banana Cake", "price": "32", "sku": "BANANA-CAKE" }
+    ]
+  }
+}'
+
 ```
