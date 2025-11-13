@@ -1,30 +1,34 @@
 const schema = require("../../assets/schema.json");
 
-const applySpecialDiscount = (reference, lineItems) => {
-  const prerequisiteSkusList = lineItems.filter((item) =>
-    schema.prerequisite_skus.includes(item.sku),
-  );
-  const eligibleSkusList = lineItems.filter((item) =>
-    schema.eligible_skus.includes(item.sku),
-  );
+const getShoppingCart = (reference, lineItems) => {
+  try {
+    const prerequisiteSkusList = lineItems.filter((item) =>
+      schema.prerequisite_skus.includes(item.sku),
+    );
+    const eligibleSkusList = lineItems.filter((item) =>
+      schema.eligible_skus.includes(item.sku),
+    );
 
-  let totalCartValue = 0;
+    let totalCartValue = 0;
 
-  const isDiscountEligible =
-    prerequisiteSkusList.length && eligibleSkusList.length;
-  if (isDiscountEligible) {
-    applyDiscount(eligibleSkusList);
+    const isDiscountEligible =
+      prerequisiteSkusList.length && eligibleSkusList.length;
+    if (isDiscountEligible) {
+      applyDiscount(eligibleSkusList);
+    }
+
+    totalCartValue = calculateCartTotal(lineItems);
+
+    return {
+      cart: {
+        reference: reference,
+        lineItems: lineItems,
+        final_cart_cost: `$${totalCartValue.toFixed(2)}`,
+      },
+    };
+  } catch (error) {
+    throw error;
   }
-
-  totalCartValue = calculateCartTotal(lineItems);
-
-  return {
-    cart: {
-      reference: reference,
-      lineItems: lineItems,
-      final_cart_cost: `$${totalCartValue.toFixed(2)}`,
-    },
-  };
 };
 
 const applyDiscount = (eligibleSkusList) => {
@@ -44,4 +48,4 @@ const calculateCartTotal = (items) => {
   }, 0);
 };
 
-module.exports = { applySpecialDiscount };
+module.exports = { getShoppingCart };

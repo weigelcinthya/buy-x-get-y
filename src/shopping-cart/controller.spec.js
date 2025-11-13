@@ -20,7 +20,7 @@ describe("POST Request", () => {
       json: jest.fn(),
     };
 
-    ShoppingCartController.shoppingCart(req, res);
+    ShoppingCartController.getShoppingCart(req, res);
 
     expect(res.status).toHaveBeenCalledWith(200);
   });
@@ -40,7 +40,7 @@ describe("POST Request", () => {
       json: jest.fn(),
     };
 
-    ShoppingCartController.shoppingCart(req, res);
+    ShoppingCartController.getShoppingCart(req, res);
 
     expect(res.status).toHaveBeenCalledWith(400);
   });
@@ -51,7 +51,7 @@ describe("POST Request", () => {
       status: jest.fn().mockReturnThis(),
       json: jest.fn(),
     };
-    ShoppingCartController.shoppingCart(req, res);
+    ShoppingCartController.getShoppingCart(req, res);
 
     expect(res.status).toHaveBeenCalledWith(400);
   });

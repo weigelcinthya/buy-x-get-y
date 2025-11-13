@@ -9,7 +9,7 @@ An API to apply special discounts built with Node and Express.js
 
 ## Getting started
 
-- Install dependencies 
+- Install dependencies
 
 ```
 npm install
@@ -25,8 +25,8 @@ npm run start
 
 ## Testing the application
 
-- You'll need [Postman](https://www.postman.com/) or another similar application to send requests
-- The server will be available in the http://localhost:3000/ and you can test the shopping cart endpoint with this path: /shopping-cart
+- You'll need [Postman](https://www.postman.com/) or another HTTP Client
+- The endpoint will be available in this path: http://localhost:3000/api/v1/shopping-cart
 - The request is of type 'POST' and the body should follow the example below:
 
 ```json
@@ -42,7 +42,8 @@ npm run start
   }
 }
 ```
-- Another option to test the aplication is to run a 'curl' command, like the example below: 
+
+- Another option to test the aplication is to run a 'curl' command, like the example below:
 
 ```
 curl --location 'http://localhost:3000/shopping-cart' \

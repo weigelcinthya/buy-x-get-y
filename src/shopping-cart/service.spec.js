@@ -27,7 +27,7 @@ test("expects special discount to not be applied when there´s no prerequisite s
   };
 
   expect(
-    ShoppingCartService.applySpecialDiscount(reference, lineItems),
+    ShoppingCartService.getShoppingCart(reference, lineItems),
   ).toStrictEqual(expectedCart);
 });
 
@@ -64,7 +64,7 @@ test("expects special discount to be applied when theres at least one prerequisi
   };
 
   expect(
-    ShoppingCartService.applySpecialDiscount(reference, lineItems),
+    ShoppingCartService.getShoppingCart(reference, lineItems),
   ).toStrictEqual(expectedCart);
 });
 
@@ -107,6 +107,6 @@ test("expects special discount to be applied in the eligible item with the cheap
   };
 
   expect(
-    ShoppingCartService.applySpecialDiscount(reference, lineItems),
+    ShoppingCartService.getShoppingCart(reference, lineItems),
   ).toStrictEqual(expectedCart);
 });
