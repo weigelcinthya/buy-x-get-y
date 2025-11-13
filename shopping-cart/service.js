@@ -1,30 +1,31 @@
 const schema = require("../assets/schema.json");
 
 const applySpecialDiscount = (reference, lineItems) => {
-    const prerequisiteSkusList = lineItems.filter((item) =>
-        schema.prerequisite_skus.includes(item.sku),
-    );
-    const eligibleSkusList = lineItems.filter((item) =>
-        schema.eligible_skus.includes(item.sku),
-    );
+  const prerequisiteSkusList = lineItems.filter((item) =>
+    schema.prerequisite_skus.includes(item.sku),
+  );
+  const eligibleSkusList = lineItems.filter((item) =>
+    schema.eligible_skus.includes(item.sku),
+  );
 
-    let totalCartValue = 0;
+  let totalCartValue = 0;
 
-    const isDiscountEligible = prerequisiteSkusList.length && eligibleSkusList.length;
-    if(isDiscountEligible) {
-        applyDiscount(eligibleSkusList);
-    }
+  const isDiscountEligible =
+    prerequisiteSkusList.length && eligibleSkusList.length;
+  if (isDiscountEligible) {
+    applyDiscount(eligibleSkusList);
+  }
 
-    totalCartValue = calculateCartTotal(lineItems);
+  totalCartValue = calculateCartTotal(lineItems);
 
-    return {
-        cart: {
-            reference: reference,
-            lineItems: lineItems,
-            final_cart_cost: `$${totalCartValue.toFixed(2)}`,
-        },
-    };
-}
+  return {
+    cart: {
+      reference: reference,
+      lineItems: lineItems,
+      final_cart_cost: `$${totalCartValue.toFixed(2)}`,
+    },
+  };
+};
 
 const applyDiscount = (eligibleSkusList) => {
   let sortedEligibleSkus = eligibleSkusList.sort((a, b) => {
@@ -42,6 +43,5 @@ const calculateCartTotal = (items) => {
     return sum + Number(currentItem.price);
   }, 0);
 };
-
 
 module.exports = { applySpecialDiscount };
