@@ -1,0 +1,26 @@
+{
+  "name": "buy-x-get-y",
+  "version": "1.0.0",
+  "description": "An API to apply special discounts",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --inspect --watch-path=./ ./app.js",
+    "lint": "npx eslint ./src/**",
+    "lint:fix": "npx eslint ./src/** --fix",
+    "format": "npx prettier . --write",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "eslint": "^9.39.1",
+    "globals": "^16.5.0",
+    "jest": "^30.2.0",
+    "prettier": "3.6.2"
+  }
+}
