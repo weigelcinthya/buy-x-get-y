@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const ShoppingCartController = require("./shopping-cart/controller");
+const cartRouter = require('./shopping-cart/routes')
 
 app.use(express.json());
 
@@ -11,7 +11,7 @@ app.get("/status", (req, res) => {
   });
 });
 
-app.post("/shopping-cart", ShoppingCartController.shoppingCart);
+app.use("/api/v1/shopping-cart", cartRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

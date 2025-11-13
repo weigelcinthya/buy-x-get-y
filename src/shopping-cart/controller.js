@@ -1,6 +1,6 @@
 const ShoppingCartService = require("./service");
 
-exports.shoppingCart = (req, res) => {
+exports.getShoppingCart = (req, res) => {
   if (!req.body || Object.keys(req.body).length === 0) {
     res.status(400).json({ error: "Request body cannot be empty" });
     return;
@@ -12,7 +12,7 @@ exports.shoppingCart = (req, res) => {
     res.status(400).json({ message: "There's no items in the cart." });
   }
 
-  const processedData = ShoppingCartService.applySpecialDiscount(
+  const processedData = ShoppingCartService.getShoppingCart(
     reference,
     lineItems,
   );
