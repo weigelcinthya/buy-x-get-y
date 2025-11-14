@@ -46,7 +46,7 @@ npm run start
 - Another option to test the aplication is to run a 'curl' command, like the example below:
 
 ```
-curl --location 'http://localhost:3000/shopping-cart' \
+curl --location 'http://localhost:3000/api/v1/shopping-cart' \
 --header 'Content-Type: application/json' \
 --data '{
   "cart": {
