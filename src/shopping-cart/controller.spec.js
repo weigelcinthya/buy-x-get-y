@@ -1,5 +1,6 @@
 const ShoppingCartController = require("./controller");
 
+// PRO: Integration test - tests the entire controller flow
 describe("POST Request", () => {
   it("return 200 status if cart has items", () => {
     const req = {
